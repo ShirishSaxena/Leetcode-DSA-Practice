@@ -2,10 +2,8 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
         int[] result = new int[2];
-        // Arrays.fill(result, -1); 
         result[0] = BinarySearch(nums, target, true);
         result[1] = BinarySearch(nums, target, false);
-            //Math.max(BinarySearch(nums, target, 0, result[0]), BinarySearch(nums, target, result[0], nums.length-1));
 
         return result;
     }
