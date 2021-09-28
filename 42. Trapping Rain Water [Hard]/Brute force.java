@@ -11,9 +11,20 @@ class Solution {
         
         int maxWater = 0;
         
+        // int maxLeft = 0;
+        
         // we'll run this loop from 1 upto length-1
         // because boundaries can't hold anything so we just don't account for first and last element.
         for(int i=1; i < height.length-1; i++){
+            /*
+                Small optimization is we can use DP to store maxLeft as we're moving from left to right so instead of 
+                int maxLeft = calling the function every iteration.
+                we can simply do 
+                
+                int maxRight = findMax(height, i, height.length);
+                
+                this does halve the runtime but still have O(N*N) time complexity {O(N * (N/2));
+            */
             int maxLeft = findMax(height, 0, i);
             int maxRight = findMax(height, i, height.length);
             
