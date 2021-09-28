@@ -1,4 +1,7 @@
 class Solution {
+    // Max Runtime Leetcode [No Optimization] = 257ms
+    // After Left call optimization = 129ms
+    // After right call optimization = 2ms
     public int trap(int[] height) {
         // Brute force solution
         /* logic here is that we iterate through each elemtent while calling a helper function
@@ -6,12 +9,16 @@ class Solution {
            global maxWater var, in any case the answer is negative, we neglect that.
         */
         
+       
+        
         // Testcases
         if(height.length <= 1) return 0;
         
         int maxWater = 0;
         
         // int maxLeft = 0;
+        // int maxRight = findMax(height, 1, height.length);
+        
         
         // we'll run this loop from 1 upto length-1
         // because boundaries can't hold anything so we just don't account for first and last element.
@@ -21,9 +28,17 @@ class Solution {
                 int maxLeft = calling the function every iteration.
                 we can simply do 
                 
-                int maxRight = findMax(height, i, height.length);
+                maxLeft = (height[i-1] > height[maxLeft]) ? i-1 : maxLeft;
                 
                 this does halve the runtime but still have O(N*N) time complexity {O(N * (N/2));
+            */
+            
+            /*
+                By using the same logic as above we can further reduce findMax calls by simply specifying conditions that is;
+                we first find maxHeight index before loop, and check if maxHeight index is greater than current i, if not call it again.
+                
+                
+                maxRight = (maxRight <= i) ? findMax(height, i, height.length) : maxRight;
             */
             int maxLeft = findMax(height, 0, i);
             int maxRight = findMax(height, i, height.length);
