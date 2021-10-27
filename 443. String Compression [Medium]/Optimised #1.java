@@ -24,7 +24,7 @@ class Solution {
 }
 
 /*
-There it is, o(n) time with o(1) space.
+There it is, o(n) time with log10(n) space.
 
 Although, I am not so sure about "Integer.toString(count).toCharArray()". It should somehow require some kinda space, even if we aren't saving it?
 After searching, I found that this above line is atleast log10(n).
