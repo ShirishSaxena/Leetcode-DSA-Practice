@@ -15,8 +15,7 @@ class Solution {
                     idx++;
                     count++;
                 }
-                curr.append(count);
-                curr.append(currChar);       
+                curr.append(count).append(currChar);      
             }
             prev = curr.toString();
         }
