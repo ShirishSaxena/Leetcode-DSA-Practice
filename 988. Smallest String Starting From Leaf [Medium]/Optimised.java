@@ -14,7 +14,7 @@
  * }
  */
 class Solution {
-    String curr = "";
+    String curr = null;
     public String smallestFromLeaf(TreeNode root) {
         DFS(root, new StringBuilder(""));
         return curr;
@@ -27,13 +27,10 @@ class Solution {
         s.insert(0, (char) ('a' + root.val));
         
         if(root.left == null && root.right == null){
-            if(curr.length() > 0){
-                String temp = s.toString();
-                if(temp.compareTo(curr) < 0)
-                    curr = temp;
+            String temp = s.toString();
+            if(curr == null || temp.compareTo(curr) < 0){
+                curr = temp;
             }
-            else
-                curr = s.toString();
         }
         DFS(root.left, s);
         DFS(root.right, s);
@@ -47,6 +44,6 @@ Woohoo!, finally I feel like I'm starting to get the gist of Tree and recursion 
 Yet again, stringBuilder saves the day!
 
 Runtime: 1 ms, faster than 99.69% of Java online submissions for Smallest String Starting From Leaf.
-Memory Usage: 38.9 MB, less than 68.32% of Java online submissions for Smallest String Starting From Leaf.
+Memory Usage: 39 MB, less than 63.99% of Java online submissions for Smallest String Starting From Leaf.
 
 */
