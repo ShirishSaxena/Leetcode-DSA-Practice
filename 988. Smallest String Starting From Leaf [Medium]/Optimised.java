@@ -25,20 +25,20 @@ class Solution {
             return;
         
         s.insert(0, (char) ('a' + root.val));
+        
         if(root.left == null && root.right == null){
             if(curr.length() > 0){
-                if(s.toString().compareTo(curr) < 0)
-                    curr = s.toString();
+                String temp = s.toString();
+                if(temp.compareTo(curr) < 0)
+                    curr = temp;
             }
             else
                 curr = s.toString();
-            s.deleteCharAt(0); // backTrack
-            return ;
         }
         DFS(root.left, s);
         DFS(root.right, s);
         
-        s.deleteCharAt(0); // backTrack
+        s.deleteCharAt(0);
     }
 }
 
