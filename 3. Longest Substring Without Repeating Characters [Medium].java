@@ -1,5 +1,29 @@
 class Solution {
     public int lengthOfLongestSubstring(String s) {
+        int[] map = new int[128];
+        
+        int maxLength = 0;
+        int i=0, j=0;
+        while(j < s.length()){
+            if(map[s.charAt(j)] == 0){
+                map[s.charAt(j++)]++; // increment map and j
+                maxLength = Math.max(maxLength, (j - i));
+            }
+            else{
+                // found duplicate
+                map[s.charAt(i++)] = 0;
+            }
+        }
+        return maxLength;
+    }
+}
+
+// Better approach using array. From 7ms runtime to 2ms.
+
+
+// approach with hashset below
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
         if(s.length() <= 1) return s.length();
         
         HashSet <Character> set = new HashSet<>();
@@ -18,7 +42,6 @@ class Solution {
         return maxLength;
     }
 }
-
 /*
 Sliding window approach.
 
