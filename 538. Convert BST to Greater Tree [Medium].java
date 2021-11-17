@@ -11,20 +11,17 @@ class Solution {
         
         while(!s.isEmpty() || currNode != null){
             // save everything right
-            while(currNode != null){
+            if(currNode != null){
                 s.push(currNode);
                 currNode = currNode.right;
             }
-            
-            // do something
-            currNode = s.pop();
-            max += currNode.val;
-            currNode.val = max;
-            currNode = currNode.left;
+            else{            
+                currNode = s.pop();
+                max += currNode.val;
+                currNode.val = max;
+                currNode = currNode.left;
+            }
         }
-        
-        
-        return root;
-        
+        return root; 
     }
 }
